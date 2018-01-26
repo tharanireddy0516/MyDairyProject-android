@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">My Dairy</string>
+    <string name="save">save</string>
+    <string name="_12_12_2017">12/12/2017</string>
+    <string name="this_is_preview">THIS IS PREVIEW</string>
+    <string name="title">TITLE</string>
+    <string name="create">create</string>
+    <string name="cancel">cancel</string>
+    <string name="delete">delete</string>
+    <string name="deleteNote">delete</string>
+    <string name="title1">title</string>
+    <string name="enter_your_note">enter your note</string>
+    <string name="updatesavednote">updatesavednote</string>
+    <string name="for_date">For date</string>
+    <string name="for_content">For content</string>
+</resources>

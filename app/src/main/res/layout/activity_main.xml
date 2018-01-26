@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?><!--xml layer starts here
+xml stands for extensible markup language
+it is a background code of layouts,widges etc-->
+<!--Linear layout is one of the types of layout
+    It aligns views one by one that is by vertically/horizontally
+    layout_width indicates the width of the Linear layout
+    layout_Height indicates the height of the Linear layout
+    context indicates the package name of the respective java class
+    match parent will take complete height or width of text
+    paddingBottom,paddingLeft,paddingRight,paddingTop indicates the innerSpace of listView
+    background indicates the background color
+    -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.tharani.mydairy.MainActivity"
+    android:background="@color/colorAccent">
+<!--Here taking ListView to display the saved Notes
+    ListView is a view group that displays a list of scrollable items
+    layout_Width indicates width of listView
+    layout_height indicates height of listView
+    match parent takes the complete height and width-->
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/list_View"
+        >
+    </ListView>
+</LinearLayout><!--LinearLayout ends here-->

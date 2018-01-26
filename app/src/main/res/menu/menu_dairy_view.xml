@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?><!--xml layer starts here
+xml stands for extensible markup language
+it is a background code of layouts,widges etc-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- android:enabled="true" is Shown by activity
+      android:icon using internal icon i.e update the saved note
+      represents revert function
+      android:orderInCategory="0"is lowest the number higher in category
+     app:showAsAction="always" shows the update button
+       Resource ID. A unique resource ID. To create a new resource ID for this item, use the form: "@+id/name".
+       The plus symbol indicates that this should be created as a new ID.
+    -->
+    <item
+        android:enabled="true"
+        android:title="@string/updatesavednote"
+        android:id="@+id/action_update"
+        android:icon="@android:drawable/ic_menu_save"
+        android:orderInCategory="0"
+        app:showAsAction="always"
+        />
+
+    <!-- CANCEL THE NOTE -->
+    <!-- android:enabled="true" is Shown by activity
+      android:icon using internal icon i.e revert
+      represents revert function
+      android:orderInCategory="10"is lowest the number higher in category
+     app:showAsAction="ifRoom" hides the revert button
+    -->
+    <item
+        android:enabled="true"
+        android:id="@+id/action_cancel"
+        android:title="@string/cancel"
+        android:icon="@android:drawable/ic_menu_revert"
+        android:orderInCategory="10"
+        app:showAsAction="ifRoom"
+        />
+
+    <!-- DELETE NOTE -->
+    <!-- android:enabled="true" is Shown by activity
+      android:icon using internal icon i.e delete which delete the note
+      represents revert function
+      android:orderInCategory="20"is lowest the number higher in category
+     app:showAsAction="ifRoom" hides the delete button
+    -->
+    <item
+        android:enabled="true"
+        android:id="@+id/action_delete"
+        android:title="@string/deleteNote"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:orderInCategory="20"
+        app:showAsAction="ifRoom"
+        />
+</menu>
+    <!--Menus are additional options that are displayed by clicking the menu button of mobile
+    Menus are a common user interface component in many types of applications.
+    -->
