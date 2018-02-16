@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?><!--xml layer starts here
+xml stands for extensible markup language
+it is a background code of layouts,widges etc-->
+<!--Linear layout is one of the types of layout
+    It aligns views one by one that is by vertically/horizontally
+    layout_width indicates the width of the Linear layout
+    layout_Height indicates the height of the Linear layout
+    context indicates the package name of the respective java class
+    match parent will take complete height or width of text
+    -->
+<!--Here taking three textViews in LinearLayout for displaying saved notes -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorAccent"
+    >
+    <!--Here taking text view for title
+      TextView is one of component of palette to display anything on layout
+      width indicates the width of the TextView
+      Height indicates the height of the TextView
+      wraps content wraps the enter content
+      layout_gravity sets the text to center
+      textColor indicates the color of text
+      textStyle indicates style of text
+      textAppearance indicates size of text-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/dblist_note_title"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="#fff"
+        android:textColor="#FF0000"
+        android:textStyle="bold"
+        />
+    <!--Here taking text view for date
+    TextView is one of component of palette to display anything on layout
+    width indicates the width of the TextView
+    Height indicates the height of the TextView
+    wraps content wraps the enter content
+    background indicates the background color
+    textColor indicates the color of text
+    textStyle indicates style of text
+    textAppearance indicates size of text-->
+
+    <TextView
+        android:id="@+id/dblist_note_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Small Text"
+        android:background="#2e2d2d"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="25sp" />
+    <!--Here taking text view for content
+       TextView is one of component of palette to display anything on layout
+       width indicates the width of the TextView
+       Height indicates the height of the TextView
+       wraps content wraps the enter content
+       background indicates background color
+       textAppearance indicates size of text
+     -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#34cfc5"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/dblist_note_content_preview"
+        />
+</LinearLayout><!--LinearLayout ends here-->

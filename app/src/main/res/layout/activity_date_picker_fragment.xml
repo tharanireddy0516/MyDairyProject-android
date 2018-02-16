@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><!--xml layer starts here
+xml stands for extensible markup language
+it is a background code of layouts,widges etc-->
+<!--FrameLayout is designed to block out an area on the screen to display a single item-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.tharani.mydairy.DatePickerFragment">
+    <!-- TODO: Update blank fragment layout -->
+    <!--Here taking text view for fragment
+     TextView is one of component of palette to display anything on layout
+     width indicates the width of the TextView
+     Height indicates the height of the TextView
+
+   -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="hello_blank_fragment" />
+
+
+</FrameLayout>
