@@ -17,6 +17,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+
 /**  onCreateOptionsMenu(): by using this method it shows the option menu that is add button to create new note
  * onOptionsItemSelected():This method is used to pass the menu item selected here it passes the add button
  * using switch cases for id:action_main_new_note to create note
@@ -31,7 +32,9 @@ import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity {
     //giving reference to variable
-    private ListView  mListNotes;
+    private ListView mListNotes;
+    DairyAdapter na;
+    ArrayList<Dairy> notes;
     /*onCreate is the first method in the life cycle of an activity
        savedInstance passes data to super class,data is pull to store state of application
        * setContentView is used to set layout for the activity
@@ -42,12 +45,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mListNotes = findViewById(R.id.list_View);
+        notes = new ArrayList<>();
+        na = new DairyAdapter(this, R.layout.view_dairy_item, notes);
         //here getting reference
     }
     /**created onCreateOptionsMenu() method  inflating  menu resource
-    onCreateOptionsMenu(): by using this it shows the option menu
+     onCreateOptionsMenu(): by using this it shows the option menu
      getMenuInflater(): finding menu from resources and inflated in activity and calling the inflate method
-    and passing arguments that is menu*/
+     and passing arguments that is menu*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -63,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-    //by clicking on add button we can create new note
+        //by clicking on add button we can create new note
         /*A switch statement allows a variable to be tested for equality against a list of values.
         Each value is called a case, and the variable being switched on is checked for each case.*/
         switch (item.getItemId()) {// Creating Switch Case for item selection from the menu
@@ -73,17 +78,21 @@ public class MainActivity extends AppCompatActivity {
                  startActivity() method you can define that the intent should be used to start an activity*/
                 //run DairyActivity in new note mode
                 startActivity(new Intent(this, DairyActivity.class));
-            //here starts DairyActivity to write new note
+                //here starts DairyActivity to write new note
                 //Intent can be used to bring new activity i.e DairyActivity
                 //startActivity and passing new DairyActivity
                 break;//terminates
+            case R.id.notesDB:
+                Intent intent = new Intent(this , NoteListActivity.class);
+                startActivity(intent);
+
         }
 
         return super.onOptionsItemSelected(item);//returns onOptionsItemSelected
         //here after writing note save the note by clicking save buttons and returns to create button
     }
-/*onResume() is the method in the life cycle of activity
- *  This is the state in which the app interacts with the user*/
+    /*onResume() is the method in the life cycle of activity
+     *  This is the state in which the app interacts with the user*/
     @Override
     protected void onResume() {
         super.onResume();// Always call the superclass method first
@@ -91,12 +100,13 @@ public class MainActivity extends AppCompatActivity {
         * listview works with constructors called adapters*/
         //load saved notes into the listview
         //first, reset the listview i.e sets adapter to null
+
         mListNotes.setAdapter(null);
         //getting ArrayList ofDairy class
         //calling Utilities class for context passing getApplicationContext
-        //getApplicationContext:Returns the context for the entire application
-        ArrayList<Dairy> notes = Utilities.getAllSavedNotes(getApplicationContext());
-      //gets all saved notes from utilities class
+        notes =new ArrayList<>();
+        notes= Utilities.getAllSavedNotes(getApplicationContext());
+        //gets all saved notes from utilities class
         //sort notes from new to old
         /*Collections is an utility class in java.util package.
         It consists of only static methods which are used to operate on objects of type Collection.*/
@@ -105,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
             //comparing saved notes by taking Dairy class
             @Override
             public int compare(Dairy lhs, Dairy rhs) {
-               // notes are compared based on date and time the newest note will be placed first using compare method
+                // notes are compared based on date and time the newest note will be placed first using compare method
                 if(lhs.getDateTime() > rhs.getDateTime()) {//checking if lhs DateTime greater than rhs
                     return -1;//returns
                 } else {
@@ -113,9 +123,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
         if(notes != null && notes.size() > 0) { //check if we have any notes!
-            final DairyAdapter na = new DairyAdapter(this, R.layout.view_dairy_item, notes);
+            na = new DairyAdapter(this, R.layout.view_dairy_item, notes);
             //if we have saved notes
             //taking new DairyAdapter and passing reference to context
             // for convertView taking layout view_dairy_item for saved notes
@@ -139,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                     /* putExtra() adds extended data to the intent with two parameters with extra data class Utilities and file name
                     * add data directly to the Bundle via the overloaded putExtra() methods of the Intent objects*/
                     startActivity(viewNoteIntent);//starts viewNoteIntent
-                  //startActivity for launching activity
+                    //startActivity for launching activity
                 }
             });
         } else { //remind user that we have no notes!

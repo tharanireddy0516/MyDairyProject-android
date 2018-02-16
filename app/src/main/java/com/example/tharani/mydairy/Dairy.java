@@ -1,6 +1,9 @@
 package com.example.tharani.mydairy;
-//Package objects contain version information about the implementation and specification of a Java package
-//import is libraries imported for writing the code
+
+/**
+ * Created by Tharani on 2/16/2018.
+ */
+
 import android.content.Context;
 
 import java.io.Serializable;
@@ -8,9 +11,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-/**
- * Created by Tharani on 1/21/2018.
- */
 /**created diary objects i.e  mDateTime,mTitle,mContent
  * getTitle():Using getTitle( ) method for retrieving the Title
  * setTile():by using this method we can change the title
@@ -30,17 +30,35 @@ public class Dairy implements Serializable {
     //declaring variables
     private long mDateTime; // DateTime is created for creation time of the note
     private String mTitle; // string object mTitle is created for title of note
-    private String mContent; //content of the note
-   /*creating constructors for all three variables
-     constructor is to initialize the objects of a class Dairy*/
+    private String mContent,Dbdate; //content of the note
+    /*creating constructors for all three variables
+      constructor is to initialize the objects of a class Dairy*/
     public Dairy(long dateInMillis, String title, String content) {
         mDateTime = dateInMillis;
         mTitle = title;
         mContent = content;
     }
-/*taking getters and setters for DateTime,title,content
- * The get method is used to obtain or retrieve DateTime,title,content values.
- * A set method is used to store the variables*/
+    /*Created Constructor for all variables i.e mTitle,mContent and dbdate for db*/
+    public Dairy(String mTitle, String mContent, String dbdate) {
+        this.mTitle = mTitle;
+        this.mContent = mContent;
+        Dbdate = dbdate;
+    }
+/*taken empty constructor*/
+    public Dairy() {
+    }
+
+    public String getDbdate() {//gets Dbdate
+        return Dbdate;//returns dbdate
+    }
+
+    public void setDbdate(String dbdate) {//sets Dbdate
+        Dbdate = dbdate;//create dbdate
+    }
+
+    /*taking getters and setters for DateTime,title,content
+     * The get method is used to obtain or retrieve DateTime,title,content values.
+     * A set method is used to store the variables*/
     public void setDateTime(long dateTime) {
         mDateTime = dateTime;//storing dateTime object
     }
@@ -81,7 +99,7 @@ public class Dairy implements Serializable {
     public String getTitle() {
         return mTitle;//returns mTitle
     }
-   //gets the content
+    //gets the content
     public String getContent() {
         return mContent;//returns content
     }

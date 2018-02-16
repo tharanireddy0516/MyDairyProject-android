@@ -10,8 +10,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
+
+import java.util.List;
+
 /**taking DairyActivity class for checking view or edit note bundle is set,checks if note is loaded or not And
  * updating widgets of loaded note that is  mEtTitle,mEtContent,mNoteCreationTime
  * if any changes occurs in saved note it gets updates here
@@ -23,14 +28,15 @@ import android.widget.Toast;
  *   checkNoteAltred():Check to see if a loaded note/new note has been changed by user or not
  *   validateAndSaveNote(): Validate the title and content and save the note and finally exit the activity and go back to MainActivity*/
 //created class DairyActivity which extends AppCompatActivity and the launcher will be MainActivity
-public class DairyActivity extends AppCompatActivity {
+public class DairyActivity extends AppCompatActivity implements DatePickerFragment.OnFragmentInteractionListener{
     //giving reference to variables
     private boolean mIsViewingOrUpdating; //state of the activity
     private long mNoteCreationTime;//note creation time
     private String mFileName;//FileName
-    private Dairy mLoadedNote = null;//loaded note i.e saved old note
+    private Dairy mLoadedNote,dairy = null;//loaded note i.e saved old note
     private EditText mEtTitle;//for title
     private EditText mEtContent;//for content
+    ImageButton imageButton;
     @Override
     /*onCreate is the first method in the life cycle of an activity
   * savedInstance passes data to super class,data is pull to store state of application
@@ -43,7 +49,8 @@ public class DairyActivity extends AppCompatActivity {
         //here getting reference for mEtTile,mEtContent,mFileName
         mEtTitle =  findViewById(R.id.note_et_title);
         mEtContent = findViewById(R.id.note_et_content);
-
+        imageButton = findViewById(R.id.addnotesbutton);
+        dairy = new Dairy();
         //check if view/edit note bundle is set, otherwise user wants to create new note
         mFileName = getIntent().getStringExtra(Utilities.EXTRAS_NOTE_FILENAME);
         //checking whether we got the note by filename or not
@@ -61,6 +68,13 @@ public class DairyActivity extends AppCompatActivity {
             mNoteCreationTime = System.currentTimeMillis();//gets note creation time
             mIsViewingOrUpdating = false;//if its is false
         }
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerFragment pickerFragment = new DatePickerFragment();
+                pickerFragment.show(getSupportFragmentManager(),"datePicker");
+            }
+        });
     }
     /**created onCreateOptionsMenu() method  inflating  menu resource
      onCreateOptionsMenu(): by using this it shows the option menu
@@ -87,9 +101,15 @@ public class DairyActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {// Creating Switch Case for item selection from the menu
             //gets item id of particular menu
-            case R.id.action_save_note: //save the note
+            case R.id.action_save_note:
+                //save the note
+
             case R.id.action_update: //or update :P
                 validateAndSaveNote();//calling the function from Utilities class
+                DBHelper dBhelper = new DBHelper(this);
+                dairy.setTitle(mEtTitle.getText().toString());
+                dairy.setContent(mEtContent.getText().toString());
+                dBhelper.insertData(dairy);
                 break;//terminates
 
             case R.id.action_delete://case for delete the note
@@ -99,6 +119,8 @@ public class DairyActivity extends AppCompatActivity {
             case R.id.action_cancel: //cancel the note
                 actionCancel();//calling the actionCancel() methods
                 break;
+
+
         }
 
         return super.onOptionsItemSelected(item);//returns to item
@@ -233,5 +255,12 @@ public class DairyActivity extends AppCompatActivity {
         }
 
         finish(); //exit the activity, should return us to MainActivity
+    }
+    /*taken fragment interaction method and created dairy object and setted Dbdate*/
+    @Override
+    public void onFragmentInteraction(List<Integer> uri) {
+        dairy = new Dairy();//taken new dairy object
+        String dbdate = uri.get(0)+"/"+uri.get(1)+"/"+uri.get(2);
+        dairy.setDbdate(dbdate);//sets Dbdate
     }
 }

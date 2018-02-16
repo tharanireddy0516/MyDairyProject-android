@@ -13,4 +13,6 @@
     <string name="updatesavednote">updatesavednote</string>
     <string name="for_date">For date</string>
     <string name="for_content">For content</string>
+    <string name="title_activity_note_list">NoteListActivity</string>
+    <string name="view_dbdata">view dbdata</string>
 </resources>

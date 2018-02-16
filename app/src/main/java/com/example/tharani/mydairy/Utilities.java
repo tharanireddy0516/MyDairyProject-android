@@ -1,6 +1,9 @@
 package com.example.tharani.mydairy;
-//Package objects contain version information about the implementation and specification of a Java package
-//import is libraries imported for writing the code
+
+/**
+ * Created by Tharani on 2/16/2018.
+ */
+
 import android.content.Context;
 import android.util.Log;
 
@@ -12,9 +15,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-/**
- * Created by Tharani on 1/21/2018.
- */
 /**Utilities class is for taking care of save note,loads note and for deleting note
  * saveNote():
  * saves note on private storage area of app
@@ -46,11 +46,11 @@ public class Utilities {
      * @param note    The note to be saved
      */
     public static boolean saveNote(Context context, Dairy note) {
-      //here taking saveNote method
-      //for saving note needs reference to context,
-       // context allows us to  save file,load file
-       // taking return type is boolean to check save was successful or not
-       // taking second argument as note
+        //here taking saveNote method
+        //for saving note needs reference to context,
+        // context allows us to  save file,load file
+        // taking return type is boolean to check save was successful or not
+        // taking second argument as note
         String fileName = String.valueOf(note.getDateTime()) + FILE_EXTENSION;
         //for saving file taking fileName and gettingDateTime from note object
         //and giving extension of bin,so can extend the note
@@ -105,7 +105,7 @@ public class Utilities {
 
         FileInputStream fis;//read objects and add to list of notes
         ObjectInputStream ois;
-       //for getting items into list taking for for loop
+        //for getting items into list taking for for loop
         for (int i = 0; i < noteFiles.size(); i++) {
             /*Taking try catch block because IOExceptions always tend to fail
             * ClassNotFoundException:if dairy class is not found then objectInputStream cannot catch the content of file to a note class or object*/
@@ -121,12 +121,14 @@ public class Utilities {
             } catch (IOException | ClassNotFoundException e) {//catches IOException and ClassNotFoundException
                 e.printStackTrace();
                 // if a problem occur in program printStackTrace()says where the actual problem occurred in debugger
-                return null;//returning null object
+                //returning null object
+
             }
         }
 
         return notes;//returning notes
     }
+
 
     /**
      * Loads a note file by its name
@@ -136,7 +138,7 @@ public class Utilities {
      * @return A Note object, null if something goes wrong!
      */
     public static Dairy getNoteByFileName(Context context, String fileName) {
-    //returns only one note by its name
+        //returns only one note by its name
         File file = new File(context.getFilesDir(), fileName);
         //creating new file with first argument as to getFilesDir and second is fileName
         if (file.exists() && !file.isDirectory()) { //checking if file actually exist
@@ -184,3 +186,4 @@ public class Utilities {
         return false;//or else returns false
     }
 }
+

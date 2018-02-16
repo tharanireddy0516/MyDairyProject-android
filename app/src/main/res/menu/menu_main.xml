@@ -13,6 +13,12 @@ it is a background code of layouts,widges etc-->
         android:orderInCategory="0"
         app:showAsAction="always"
         />
+    <item android:id="@+id/notesDB"
+        android:title="view_db_data"
+        android:orderInCategory="1"
+        app:showAsAction="never"/>
+
+
     <!-- android:enabled="true" is Shown by activity
     android:icon using internal icon i.e add to add the new note
     represents add function

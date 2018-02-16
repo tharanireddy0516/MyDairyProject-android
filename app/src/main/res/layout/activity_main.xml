@@ -22,11 +22,11 @@ it is a background code of layouts,widges etc-->
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.tharani.mydairy.MainActivity"
     android:background="@color/colorAccent">
-<!--Here taking ListView to display the saved Notes
-    ListView is a view group that displays a list of scrollable items
-    layout_Width indicates width of listView
-    layout_height indicates height of listView
-    match parent takes the complete height and width-->
+    <!--Here taking ListView to display the saved Notes
+        ListView is a view group that displays a list of scrollable items
+        layout_Width indicates width of listView
+        layout_height indicates height of listView
+        match parent takes the complete height and width-->
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -24,18 +24,18 @@ it is a background code of layouts,widges etc-->
       textColor indicates the color of text
       textStyle indicates style of text
       textAppearance indicates size of text-->
-   <TextView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:textAppearance="?android:attr/textAppearanceLarge"
-       android:text="Large Text"
-       android:id="@+id/list_note_title"
-       android:layout_gravity="center"
-       android:gravity="center"
-       android:background="#fff"
-       android:textColor="#FF0000"
-       android:textStyle="bold"
-       />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/list_note_title"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="#fff"
+        android:textColor="#FF0000"
+        android:textStyle="bold"
+        />
     <!--Here taking text view for date
     TextView is one of component of palette to display anything on layout
     width indicates the width of the TextView
@@ -72,5 +72,5 @@ it is a background code of layouts,widges etc-->
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
         android:id="@+id/list_note_content_preview"
-       />
+        />
 </LinearLayout><!--LinearLayout ends here-->

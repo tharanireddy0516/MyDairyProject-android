@@ -1,9 +1,9 @@
 package com.example.tharani.mydairy;
-//Package objects contain version information about the implementation and specification of a Java package
-/*import is libraries imported for writing the code
-* AppCompatActivity is base class for activities
-* Bundle handles the orientation of the activity
-*/
+
+/**
+ * Created by Tharani on 2/16/2018.
+ */
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +13,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-/**
- * Created by Tharani on 1/21/2018.
- */
 /**Created class DairyAdapter in this listview gets starts building
  *  An adapter is a bridge between UI component and data source that helps us to fill data in UI component
  *  and created constructors with parameters context resources and objects
@@ -35,11 +32,11 @@ public class DairyAdapter extends ArrayAdapter<Dairy> {
     public DairyAdapter(Context context, int resource, List<Dairy> objects) {
         super(context, resource, objects);
     }
-/*taken getView() method which is used for storage of arguments
- * the adapter populates each list item with a View object by calling getView() on each row
- * covertView: The Adapter uses the convertView as a way of recycling old View objects that are no longer being used in other words
- * convertView is the ListView Item Cache that is not visible, and hence it can be reused. It lets the ListView need not create a lot of ListItems,
- * hence saving memory and making the ListView more smooth.*/
+    /*taken getView() method which is used for storage of arguments
+     * the adapter populates each list item with a View object by calling getView() on each row
+     * covertView: The Adapter uses the convertView as a way of recycling old View objects that are no longer being used in other words
+     * convertView is the ListView Item Cache that is not visible, and hence it can be reused. It lets the ListView need not create a lot of ListItems,
+     * hence saving memory and making the ListView more smooth.*/
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
